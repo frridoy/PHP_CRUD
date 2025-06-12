@@ -80,6 +80,13 @@
             return "Data deleted successfully";
          }
       }
+
+       public function show($id){
+         
+         $query = "SELECT * FROM students WHERE id = $id";
+         $result = mysqli_query($this->connection, $query);
+          return mysqli_fetch_assoc($result);
+      }
  }
 
 ?>

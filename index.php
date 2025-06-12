@@ -77,6 +77,7 @@ if (isset($_GET['status']) && $_GET['status'] == 'delete') {
                         <td>
                             <a href="edit.php?id=<?php echo $student['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
                             <a href="?status=delete&id=<?php echo $student['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="show.php?status=show&id=<?php echo $student['id']; ?>" class="btn btn-sm btn-info">Show</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
