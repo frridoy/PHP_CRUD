@@ -9,6 +9,11 @@ if (isset($_POST['student_submit'])) {
 
 $students = $crud->getData();
 
+if (isset($_GET['status']) && $_GET['status'] == 'delete') {
+    $id = $_GET['id'];
+    $delete_message = $crud->delete($id);
+}
+
 ?>
 
 
@@ -29,6 +34,11 @@ $students = $crud->getData();
             <?php if (isset($message)): ?>
                 <div class="alert alert-success">
                     <?php echo $message; ?>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($delete_message)): ?>
+                <div class="alert alert-success">
+                    <?php echo $delete_message; ?>
                 </div>
             <?php endif; ?>
             <input type="text" name="name" class="form-control my-2" placeholder="Enter Name" required>
@@ -65,8 +75,8 @@ $students = $crud->getData();
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a href="" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="edit.php?id=<?php echo $student['id']; ?>" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="?status=delete&id=<?php echo $student['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
